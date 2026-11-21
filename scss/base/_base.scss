@@ -1,0 +1,54 @@
+@use '../abstracts/variables' as *;
+
+:root {
+  color-scheme: dark;
+  --accent: #{$accent};
+  --bg: #0b0d12;
+  --surface: #12151c;
+  --surface-2: #181c25;
+  --text: #f7f8fb;
+  --muted: #a9b0bd;
+  --border: rgba(255, 255, 255, .09);
+  --header-bg: rgba(11, 13, 18, .82);
+  --input-bg: rgba(18, 21, 28, .88);
+  --shadow-sm: 0 10px 35px rgba(0, 0, 0, .16);
+  --shadow-lg: 0 26px 80px rgba(0, 0, 0, .38);
+  --icon-filter: invert(1);
+}
+
+html[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f5f6f8;
+  --surface: #ffffff;
+  --surface-2: #eef1f5;
+  --text: #17191f;
+  --muted: #606875;
+  --border: rgba(23, 25, 31, .10);
+  --header-bg: rgba(255, 255, 255, .88);
+  --input-bg: rgba(255, 255, 255, .96);
+  --shadow-sm: 0 12px 34px rgba(20, 26, 38, .08);
+  --shadow-lg: 0 30px 90px rgba(20, 26, 38, .18);
+  --icon-filter: none;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  transition: color 220ms ease, background-color 220ms ease;
+}
+body.is-locked { overflow: hidden; }
+.container {
+  width: calc(100% - clamp(32px, 5vw, 96px));
+  max-width: none;
+  margin-inline: auto;
+}
+.eyebrow {
+  color: var(--accent);
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+}

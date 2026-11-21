@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="RetroPelis: descubre series, consulta episodios y encuentra tu próxima historia para ver." />
+  <meta name="theme-color" content="#0b0d12" />
+  <title>RetroPelis | Descubre tu próxima serie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <script>
+    (() => {
+      const savedTheme = localStorage.getItem('retropelis-theme');
+      const preferredTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.dataset.theme = savedTheme || preferredTheme;
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header" id="inicio">
+    <div class="site-header__inner container">
+      <a class="brand" href="#inicio" aria-label="RetroPelis, ir al inicio">
+        <span class="brand__surface">
+          <img class="brand__logo" src="assets/img/logo.svg" alt="RetroPelis" />
+        </span>
+      </a>
+
+      <nav class="site-nav" aria-label="Navegación principal">
+        <a class="site-nav__link" href="#inicio">Inicio</a>
+        <a class="site-nav__link" href="#catalogo">Explorar</a>
+        <a class="site-nav__link" href="#descubre">Descubre</a>
+      </nav>
+
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar a modo claro" title="Cambiar tema">
+        <img class="theme-toggle__icon theme-toggle__icon--sun" src="assets/icons/sun.svg" alt="" aria-hidden="true" />
+        <img class="theme-toggle__icon theme-toggle__icon--moon" src="assets/icons/moon.svg" alt="" aria-hidden="true" />
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero__media" aria-hidden="true"></div>
+      <div class="hero__overlay" aria-hidden="true"></div>
+      <div class="hero__inner container">
+        <div class="hero__content">
+          <p class="eyebrow">Tu próxima historia empieza aquí</p>
+          <h1 class="hero__title" id="heroTitle">Encuentra algo bueno para ver esta noche.</h1>
+          <p class="hero__text">
+            Explora series, descubre nuevos títulos y consulta episodios en una experiencia rápida, visual y pensada para cualquier pantalla.
+          </p>
+
+        </div>
+
+        <form class="search search--hero" id="searchForm" role="search">
+          <label class="search__label" for="searchInput">¿Qué quieres ver hoy?</label>
+          <div class="search__group">
+            <input
+              class="search__input"
+              id="searchInput"
+              type="search"
+              placeholder="Busca una serie: Friends, Dexter, Batman..."
+              autocomplete="off"
+            />
+            <button class="button button--primary" type="submit">Buscar</button>
+          </div>
+        </form>
+
+        <a class="hero__scroll" href="#catalogo">Explorar catálogo ↓</a>
+      </div>
+    </section>
+
+    <section class="catalog" id="catalogo" aria-labelledby="catalogTitle">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Para descubrir</p>
+            <h2 class="section-heading__title" id="catalogTitle">Series para empezar a explorar</h2>
+            <p class="section-heading__text" id="catalogSubtitle">Encuentra una historia nueva o busca ese título que tienes pendiente.</p>
+          </div>
+          <button class="button button--ghost" id="resetButton" type="button">Volver a descubrir</button>
+        </div>
+
+        <div class="genre-filter" id="genreFilter" aria-label="Filtrar por género"></div>
+        <div class="status" id="status" aria-live="polite"></div>
+        <div class="catalog__grid" id="showsGrid"></div>
+      </div>
+    </section>
+
+    <section class="discovery" id="descubre" aria-labelledby="discoveryTitle">
+      <div class="container discovery__grid">
+        <div class="discovery__intro">
+          <p class="eyebrow">Explora a tu manera</p>
+          <h2 class="discovery__title" id="discoveryTitle">Menos tiempo buscando. Más tiempo viendo.</h2>
+          <div class="discovery__lead">
+            <span class="discovery__lead-accent" aria-hidden="true"></span>
+            <p class="discovery__text">
+              Encuentra opciones para ver sin saltar entre sitios. Busca, filtra y abre cada serie para conocer lo esencial antes de decidir tu próxima maratón.
+            </p>
+          </div>
+        </div>
+
+        <div class="discovery__cards">
+          <article class="feature-card">
+            <span class="feature-card__number">01</span>
+            <h3 class="feature-card__title">Busca por título</h3>
+            <p class="feature-card__text">Escribe el nombre de una serie y obtén resultados al instante sin salir de la página.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-card__number">02</span>
+            <h3 class="feature-card__title">Explora por género</h3>
+            <p class="feature-card__text">Filtra el catálogo para encontrar comedia, drama, crimen y otras historias según tu ánimo.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-card__number">03</span>
+            <h3 class="feature-card__title">Revisa episodios</h3>
+            <p class="feature-card__text">Abre cualquier título para consultar su sinopsis, estado, idioma y primeros episodios.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner container">
+      <div>
+        <img class="site-footer__logo" src="assets/img/logo.svg" alt="RetroPelis" />
+        <p class="site-footer__copy">Historias para tu próxima maratón.</p>
+      </div>
+      <p class="site-footer__source">Información de series proporcionada por <a href="https://www.tvmaze.com/" target="_blank" rel="noreferrer">TVmaze</a>.</p>
+    </div>
+  </footer>
+
+  <div class="modal" id="showModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__panel" role="document">
+      <button class="modal__close" type="button" aria-label="Cerrar detalle" data-close-modal>&times;</button>
+      <div class="modal__content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

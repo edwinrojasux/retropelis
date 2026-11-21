@@ -1,0 +1,10 @@
+@mixin focus-ring {
+  outline: 3px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  outline-offset: 3px;
+}
+
+@mixin card-surface {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
